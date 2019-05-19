@@ -16,7 +16,7 @@ public class Location {
     private String country;
     private boolean isDevBridge;
     @Nullable
-    @OneToMany(mappedBy = "locations")
+    @OneToMany(mappedBy = "location")
     private Set<Room> rooms;
 
     public long getId() {

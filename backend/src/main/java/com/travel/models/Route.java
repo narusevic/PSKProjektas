@@ -3,6 +3,7 @@ package com.travel.models;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="routes")
@@ -12,43 +13,56 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @ManyToOne
     private Location from;
+    @ManyToOne
     private Location to;
     private Date departureTime;
     private Date arrivalTime;
-    private List<ServiceItem> checkList;
-    private List<Accommodation> accommodations;
-    private List<User> members;
+    @OneToMany
+    private Set<ServiceItem> checkList;
+    @OneToMany
+    private Set<Accommodation> accommodations;
 
-    private long getId() {
+    @ManyToMany
+    private Set<User> members;
+
+    @ManyToMany
+    private Set<Trip> trips;
+
+    public long getId() {
         return this.id;
     }
 
-    private Location getFrom() {
+    public Location getFrom() {
         return this.from;
     }
 
-    private Location getTo() {
+    public Location getTo() {
         return this.to;
     }
 
-    private Date getDepartureTime() {
+    public Date getDepartureTime() {
         return this.departureTime;
     }
 
-    private Date getArrivalTime() {
+    public Date getArrivalTime() {
         return this.arrivalTime;
     }
 
-    private List<ServiceItem> getCheckList() {
+    public Set<ServiceItem> getCheckList() {
         return this.checkList;
     }
 
-    private List<Accommodation> getAccommodations() {
+    public Set<Accommodation> getAccommodations() {
         return this.accommodations;
     }
 
-    private List<User> getMembers() {
+    public Set<User> getMembers() {
         return this.members;
+    }
+
+    public Set<Trip> getTrips() {
+        return this.trips;
     }
 }

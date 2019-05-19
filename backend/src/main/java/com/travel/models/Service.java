@@ -14,7 +14,7 @@ public class Service {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "services")
+    @OneToMany(mappedBy = "service")
     private Set<ServiceItem> serviceItems;
 
     public long getId() {

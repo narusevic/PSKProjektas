@@ -20,8 +20,11 @@ public class Trip {
     private Status status;
     private Date departureTime;
     private Date arrivalTime;
+    @ManyToOne
     private Location startPlace;
+    @ManyToOne
     private Location destination;
+    @ManyToOne
     private User organizer;
 
     public long getId() {

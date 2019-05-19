@@ -1,6 +1,7 @@
 package com.travel.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,6 +20,9 @@ public class User {
 
     @ManyToMany
     private Set<Role> roles;
+
+    @ManyToMany
+    private Set<Trip> trips;
 
     public Long getId() {
         return id;
@@ -58,5 +62,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Trip> getTrips() {
+        return this.trips;
+    }
+
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
     }
 }
