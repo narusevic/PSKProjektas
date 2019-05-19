@@ -13,7 +13,7 @@ public class Accommodation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToMany
+    @ManyToMany
     private Set<User> users;
     private BigDecimal price;
     private String name;

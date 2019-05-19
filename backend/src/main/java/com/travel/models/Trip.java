@@ -1,6 +1,10 @@
 package com.travel.models;
 
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -14,16 +18,27 @@ public class Trip {
 
     @OneToMany(mappedBy = "trips")
     private Set<Route> routes;
+
     @ManyToMany(mappedBy = "trips")
     private Set<User> users;
+
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date departureTime;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date arrivalTime;
+
+    @Nullable
     @ManyToOne
     private Location startPlace;
+
+    @Nullable
     @ManyToOne
     private Location destination;
+
     @ManyToOne
     private User organizer;
 
