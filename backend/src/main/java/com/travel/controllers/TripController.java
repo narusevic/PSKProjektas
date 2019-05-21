@@ -51,4 +51,8 @@ public class TripController {
 
         return "redirect:/welcome";
     }
+    @GetMapping("/organizer")
+    public String createOrganizer(Model model) {
+        return "organizerDashboard";
+    }
 }
