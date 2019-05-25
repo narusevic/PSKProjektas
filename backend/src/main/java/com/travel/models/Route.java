@@ -2,7 +2,6 @@ package com.travel.models;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +19,7 @@ public class Route {
     private Date departureTime;
     private Date arrivalTime;
     @OneToMany
-    private Set<ServiceItem> checkList;
+    private Set<AmenityItem> checkList;
     @OneToMany
     private Set<Accommodation> accommodations;
 
@@ -50,7 +49,7 @@ public class Route {
         return this.arrivalTime;
     }
 
-    public Set<ServiceItem> getCheckList() {
+    public Set<AmenityItem> getCheckList() {
         return this.checkList;
     }
 

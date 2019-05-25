@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="service_items")
-public class ServiceItem {
+@Table(name="amenity_items")
+public class AmenityItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne
-    private Service service;
+    private Amenity amenity;
     private boolean isConfirmed;
     private BigDecimal price;
     private String comment;
@@ -21,8 +21,8 @@ public class ServiceItem {
         return this.id;
     }
 
-    public Service getService() {
-        return this.service;
+    public Amenity getAmenity() {
+        return this.amenity;
     }
 
     public boolean isConfirmed() {
