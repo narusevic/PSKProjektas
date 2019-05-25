@@ -23,8 +23,6 @@ public class RouteController {
     private TripService tripService;
     @Autowired
     private RouteService routeService;
-    @Autowired
-    private UserService userService;
 
     // TODO: add acl
     // @PreAuthorize("hasAuthority('ORGANIZER')")
@@ -43,21 +41,23 @@ public class RouteController {
         return "createRoute";
     }
 
-    @PostMapping("/route/create")
-    public String create(@ModelAttribute("routeForm") Route routeForm, BindingResult bindingResult, Principal principal) {
+    @PostMapping("/route/create/{tripId}")
+    public String create(@ModelAttribute("userForm") Route routeForm, @PathVariable String tripId, BindingResult bindingResult) {
         // TODO: Implement location service
         // Location startPlace = new Location();
         // Location destination = new Location();
         // tripForm.setStartPlace(startPlace);
         // tripForm.setDestination(destination);
 
-        User user = userService.findByEmail(principal.getName());
+        Trip trip = tripService.findById(Long.parseLong(tripId));
+
         routeForm.setAccommodations(new HashSet<Accommodation>());
         routeForm.setCheckList(new HashSet<ServiceItem>());
         routeForm.setMembers(new HashSet<User>());
+        routeForm.setTrip(trip);
 
         routeService.save(routeForm);
 
-        return "redirect:/welcome";
+        return "redirect:/trip";
     }
 }

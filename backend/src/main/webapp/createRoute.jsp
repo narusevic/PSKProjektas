@@ -13,8 +13,13 @@
   <body>
 
     <div class="container">
+    
+        <h2>Existing routes list</h2>
 
-        ${trip}
+        <c:forEach var="route" items="${trip.routes}">
+            <div>${route.departureTime} -- ${route.arrivalTime}</div>
+            <div>----------------</div>
+        </c:forEach>
 
         <form:form method="POST" modelAttribute="routeForm" class="form-route">
             <h2 class="form-trip-heading">Create Route</h2>
