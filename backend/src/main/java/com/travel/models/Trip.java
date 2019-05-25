@@ -15,8 +15,10 @@ public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    
+    private String description;
 
-    @OneToMany(mappedBy = "trips")
+    @OneToMany(mappedBy = "trip")
     private Set<Route> routes;
 
     @ManyToMany(mappedBy = "trips")
@@ -48,6 +50,10 @@ public class Trip {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     public Set<Route> getRoutes() {

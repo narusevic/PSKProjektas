@@ -2,6 +2,7 @@ package com.travel.controllers;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.List;
 
 import com.travel.models.Location;
 import com.travel.models.Route;
@@ -34,8 +35,18 @@ public class TripController {
         return "createTrip";
     }
 
+    @GetMapping("/trip")
+    public String getTrips(Model model, Principal principal) {
+        User user = userService.findByEmail(principal.getName());
+        List<Trip> trips = tripService.findByOrganizerId(user.getId());
+        System.out.println(trips);
+        model.addAttribute("trips", trips);
+
+        return "tripsList";
+    }
+ 
     @PostMapping("/trip/create")
-    public String create(@ModelAttribute("userForm") Trip tripForm, BindingResult bindingResult, Principal principal) {
+    public String create(@ModelAttribute("tripForm") Trip tripForm, BindingResult bindingResult, Principal principal) {
         // TODO: Implement location service
         // Location startPlace = new Location();
         // Location destination = new Location();
