@@ -5,6 +5,7 @@ import com.travel.services.TripService;
 import com.travel.services.UserService;
 import com.travel.services.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +26,7 @@ public class RouteController {
     private RouteService routeService;
 
     // TODO: add acl
-    // @PreAuthorize("hasAuthority('ORGANIZER')")
+    @PreAuthorize("hasAuthority('ORGANIZER')")
     @GetMapping("/route/create/{tripId}")
     public String create(Model model, @PathVariable String tripId) {
         Trip trip = tripService.findById(Long.parseLong(tripId));
@@ -41,6 +42,7 @@ public class RouteController {
         return "createRoute";
     }
 
+    @PreAuthorize("hasAuthority('ORGANIZER')")
     @PostMapping("/route/create/{tripId}")
     public String create(@ModelAttribute("userForm") Route routeForm, @PathVariable String tripId, BindingResult bindingResult) {
         // TODO: Implement location service

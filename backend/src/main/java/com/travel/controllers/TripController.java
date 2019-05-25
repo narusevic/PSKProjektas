@@ -13,6 +13,7 @@ import com.travel.services.TripService;
 import com.travel.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,8 +26,7 @@ public class TripController {
     @Autowired
     private UserService userService;
 
-    // TODO: add acl
-    // @PreAuthorize("hasAuthority('ORGANIZER')")
+    @PreAuthorize("hasAuthority('ORGANIZER')")
     @GetMapping("/trip/create")
     public String create(Model model) {
         model.addAttribute("tripForm", new Trip());
@@ -45,6 +45,7 @@ public class TripController {
         return "tripsList";
     }
  
+    @PreAuthorize("hasAuthority('ORGANIZER')")
     @PostMapping("/trip/create")
     public String create(@ModelAttribute("tripForm") Trip tripForm, BindingResult bindingResult, Principal principal) {
         // TODO: Implement location service
