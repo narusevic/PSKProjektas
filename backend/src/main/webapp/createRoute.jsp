@@ -7,15 +7,17 @@
 <html lang="en">
   <head>
       <meta charset="utf-8">
-      <title>Create trip</title>
+      <title>Create Route</title>
     </head>
 
   <body>
 
     <div class="container">
 
-        <form:form method="POST" modelAttribute="tripForm" class="form-trip">
-            <h2 class="form-trip-heading">Create Trip</h2>
+        ${trip}
+
+        <form:form method="POST" modelAttribute="routeForm" class="form-route">
+            <h2 class="form-trip-heading">Create Route</h2>
             <spring:bind path="departureTime">
                 <div class="form-group">
                     <form:input type="date" path="departureTime" class="form-control" placeholder="Departure" autofocus="true"></form:input>
@@ -37,9 +39,6 @@
                     <form:input type="text" path="destination" class="form-control" placeholder="Destination"></form:input>
                 </div>
             </spring:bind> --%>
-            <spring:bind path="status">
-                <form:select path="status" items="${statuses}" />
-            </spring:bind>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </form:form>

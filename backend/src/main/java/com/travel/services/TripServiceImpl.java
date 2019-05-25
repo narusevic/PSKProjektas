@@ -1,11 +1,16 @@
 package com.travel.services;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import com.travel.models.Trip;
 import com.travel.repositories.TripRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +33,35 @@ public class TripServiceImpl implements TripService {
         }
 
         tripRepository.save(trip);
+    }
+
+    @Override
+    public Trip findById(Long tripId){
+        Optional<Trip> trip = tripRepository.findById(tripId);
+
+        if (trip.isPresent()) {
+            return trip.get();
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Trip> findAll() {
+        return tripRepository.findAll();
+    }
+
+    @Override
+    public List<Trip> findByOrganizerId(Long userId){
+        List<Trip> trips = tripRepository.findAll();
+        List<Trip> organizerTrips = new ArrayList<>();
+
+        for (Trip trip: trips) {
+            if (trip.getOrganizer().getId() == userId) {
+                organizerTrips.add(trip);
+            }
+        }
+
+        return organizerTrips;
     }
 }
