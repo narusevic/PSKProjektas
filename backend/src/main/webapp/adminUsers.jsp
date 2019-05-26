@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="WEB-INF/custom.tld"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -171,7 +172,7 @@
                             <tr>
                                 <th>Email Address</th>
                                 <th>Set as an organizer</th>
-                                <th>Roles</th>
+                                <th>Is Organizer</th>
                                 <th>Delete user</th>
                             </tr>
                             </thead>
@@ -179,7 +180,7 @@
                             <tr>
                                 <th>Email Address</th>
                                 <th>Set as an organizer</th>
-                                <th>Roles</th>
+                                <th>Is Organizer</th>
                                 <th>Delete user</th>
                             </tr>
                             </tfoot>
@@ -193,7 +194,9 @@
                                             <button class="btn btn-lg btn-primary btn-block" type="submit">Change organizer role</button>
                                         </form:form>
                                     </td>
-                                    <td>${user.getRoles()}</td>
+                                    <td>
+                                        ${fn:containsRole(user.getRoles(), "ORGANIZER")}
+                                    </td>
                                     <td>
                                         <form:form action="${contextPath}/admin/user/${user.id}" method="POST">
                                             <button class="btn" type="submit">
