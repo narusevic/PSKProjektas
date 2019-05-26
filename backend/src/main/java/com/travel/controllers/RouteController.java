@@ -1,6 +1,7 @@
 package com.travel.controllers;
 
 import com.travel.models.*;
+import com.travel.services.LocationService;
 import com.travel.services.TripService;
 import com.travel.services.UserService;
 import com.travel.services.RouteService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.Set;
 
 
 @Controller
@@ -24,11 +26,15 @@ public class RouteController {
     @Autowired
     private RouteService routeService;
 
+    @Autowired
+    private LocationService locationService;
+
     // TODO: add acl
     // @PreAuthorize("hasAuthority('ORGANIZER')")
     @GetMapping("/route/create/{tripId}")
     public String create(Model model, @PathVariable String tripId) {
         Trip trip = tripService.findById(Long.parseLong(tripId));
+        Set<Location> locations = locationService.findByIsDevBridge(true);
 
         if (trip == null) {
             model.addAttribute("message", "Trip with id " + tripId + " not found!");
@@ -37,6 +43,7 @@ public class RouteController {
 
         model.addAttribute("trip", trip);
         model.addAttribute("routeForm", new Route());
+        model.addAttribute("locations", locations);
         
         return "createRoute";
     }

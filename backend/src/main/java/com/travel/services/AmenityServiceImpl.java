@@ -3,11 +3,12 @@ package com.travel.services;
 import com.travel.models.Amenity;
 import com.travel.repositories.AmenityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
 
-@org.springframework.stereotype.Service
+@Service
 public class AmenityServiceImpl implements AmenityService {
     @Autowired
     private AmenityRepository amenityRepository;

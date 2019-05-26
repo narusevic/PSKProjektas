@@ -19,14 +19,14 @@ public class AmenityController {
     @Autowired
     private AmenityValidator amenityValidator;
 
-    @GetMapping("/createAmenity")
+    @GetMapping("/amenity/create")
     public String createService(Model model) {
         model.addAttribute("amenityForm", new Amenity());
 
         return "createAmenity";
     }
 
-    @PostMapping("/createAmenity")
+    @PostMapping("/amenity/create")
     public String createService(@ModelAttribute("amenityForm") Amenity amenityForm, BindingResult bindingResult) {
         amenityValidator.validate(amenityForm, bindingResult);
         if(bindingResult.hasErrors()){

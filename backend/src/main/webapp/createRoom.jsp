@@ -21,6 +21,7 @@
                     <form:options items="${locations}" itemValue="id" itemLabel="city"></form:options>
                 </form:select>
             </spring:bind>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </form:form>
     </div>
 </body>

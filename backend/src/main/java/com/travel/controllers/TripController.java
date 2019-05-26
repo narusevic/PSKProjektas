@@ -3,12 +3,14 @@ package com.travel.controllers;
 import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.travel.models.Location;
 import com.travel.models.Route;
 import com.travel.models.Status;
 import com.travel.models.Trip;
 import com.travel.models.User;
+import com.travel.services.LocationService;
 import com.travel.services.TripService;
 import com.travel.services.UserService;
 
@@ -24,13 +26,17 @@ public class TripController {
     private TripService tripService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private LocationService locationService;
 
     // TODO: add acl
     // @PreAuthorize("hasAuthority('ORGANIZER')")
     @GetMapping("/trip/create")
     public String create(Model model) {
+        Set<Location> locations = locationService.findByIsDevBridge(true);
         model.addAttribute("tripForm", new Trip());
         model.addAttribute("statuses", Status.values());
+        model.addAttribute("locations", locations);
 
         return "createTrip";
     }
@@ -47,12 +53,6 @@ public class TripController {
  
     @PostMapping("/trip/create")
     public String create(@ModelAttribute("tripForm") Trip tripForm, BindingResult bindingResult, Principal principal) {
-        // TODO: Implement location service
-        // Location startPlace = new Location();
-        // Location destination = new Location();
-        // tripForm.setStartPlace(startPlace);
-        // tripForm.setDestination(destination);
-
         User user = userService.findByEmail(principal.getName());
         tripForm.setOrganizer(user);
         tripForm.setRoutes(new HashSet<Route>());

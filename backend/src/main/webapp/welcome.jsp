@@ -18,8 +18,7 @@
         <h4 class="text-center"><a href="${contextPath}/deleteUser">DeleteUser</a></h4>
         <h4 class="text-center"><a href="${contextPath}/trip/create">CreateTrip</a></h4>
         <h4 class="text-center"><a href="${contextPath}/trip/">Trips List</a></h4>
-        <h4 class="text-center"><a href="${contextPath}/route/create">Create route</a></h4>
-        <h4 class="text-center"><a href="${contextPath}/createAmenity">Register an amenity (service)</a></h4>
+        <h4 class="text-center"><a href="${contextPath}/amenity/create">Register an amenity (service)</a></h4>
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
     </c:if>
   </div>
