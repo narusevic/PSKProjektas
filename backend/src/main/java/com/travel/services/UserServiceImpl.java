@@ -36,6 +36,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Set<User> findByRole(String roleName) {
+        List<Role> roles = roleRepository.findByName(roleName);
+
+        if (roles.size() == 0) {
+            return new HashSet<User>();
+        }
+
+        return roles.get(0).getUsers();
+    }
+
+    @Override
     public User findById(Long userId) {
         Optional<User> user = userRepository.findById(userId);
 
