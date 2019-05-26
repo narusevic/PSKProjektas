@@ -34,10 +34,16 @@ public class AmenityItemController {
 
     @GetMapping("amenityItem/create/{routeId}")
     public String createAmenityItem(Model model, @PathVariable String routeId) {
-        Route route = routeService.findAll();
+        Route route = routeService.findById(Long.parseLong(routeId));
+        if(route==null){
+            model.addAttribute("message", "Route with id " + routeId + " not found!");
+            return "error";
+        }
+
         List<Amenity> amenities = amenityService.findAll();
         model.addAttribute("amenityItemForm", new AmenityItem());
         model.addAttribute("amenities", amenities);
+        model.addAttribute("route", route);
 
         return "createAmenityItem";
     }
