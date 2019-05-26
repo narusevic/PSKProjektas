@@ -19,6 +19,8 @@ public class Accommodation {
     private String name;
     @ManyToOne
     private Location location;
+    @ManyToOne
+    private Route route;
 
     public Accommodation() {
     }

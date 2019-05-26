@@ -13,6 +13,8 @@ public class AmenityItem {
 
     @ManyToOne
     private Amenity amenity;
+    @ManyToOne
+    private Route route;
 
     private boolean isConfirmed;
     private BigDecimal price;

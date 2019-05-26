@@ -23,9 +23,9 @@ public class Route {
     private Date departureTime;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date arrivalTime;
-    @OneToMany
+    @OneToMany(mappedBy = "route")
     private Set<AmenityItem> checkList;
-    @OneToMany
+    @OneToMany(mappedBy = "route")
     private Set<Accommodation> accommodations;
 
     @ManyToMany

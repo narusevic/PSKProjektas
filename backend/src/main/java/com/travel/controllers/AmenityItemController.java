@@ -32,8 +32,9 @@ public class AmenityItemController {
     @Autowired
     private RouteService routeService;
 
-    @GetMapping("amenityItem/create")
-    public String createAmenityItem(Model model) {
+    @GetMapping("amenityItem/create/{routeId}")
+    public String createAmenityItem(Model model, @PathVariable String routeId) {
+        Route route = routeService.findAll();
         List<Amenity> amenities = amenityService.findAll();
         model.addAttribute("amenityItemForm", new AmenityItem());
         model.addAttribute("amenities", amenities);
@@ -41,7 +42,7 @@ public class AmenityItemController {
         return "createAmenityItem";
     }
 
-    @PostMapping("amenityItem/create")
+    @PostMapping("amenityItem/create/{routeId}")
     public String createAmenityItem(@ModelAttribute("amenityItemForm") AmenityItem amenityItem, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "createAmenityItem";

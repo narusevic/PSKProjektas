@@ -14,7 +14,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
 
-      <title>SB Admin - Login</title>
+      <title>Log in</title>
 
       <!-- Custom fonts for this template-->
       <link href="${contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,6 +36,7 @@
                           <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="true">
                           <label for="inputEmail">Email Address</label>
                       </div>
+                      <br/>
                       <div class="form-label-group">
                           <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
                           <label for="inputPassword">Password</label>
@@ -58,7 +59,6 @@
 
   <!-- Core plugin JavaScript-->
   <script src="${contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-
 
   </body>
 

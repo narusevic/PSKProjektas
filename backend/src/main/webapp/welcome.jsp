@@ -15,12 +15,14 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h4 class="text-center"><a href="${contextPath}/deleteUser">DeleteUser</a></h4>
         <h4 class="text-center"><a href="${contextPath}/trip/create">CreateTrip</a></h4>
         <h4 class="text-center"><a href="${contextPath}/trip/">Trips List</a></h4>
-        <h4 class="text-center"><a href="${contextPath}/amenity/create">Register an amenity (service)</a></h4>
-        <h4 class="text-center"><a href="${contextPath}/accommodation/create">Register an accommodation fact</a></h4>
-        <h4 class="text-center"><a href="${contextPath}/amenityItem/create">Register an amenity item</a></h4>
+        <h4 class="text-center"><a href="${contextPath}/trip/my">Trips I participate in</a></h4>
+        <%--<h4 class="text-center"><a href="${contextPath}/amenity/create">Register an amenity (service)</a></h4>--%>
+        <%--<h4 class="text-center"><a href="${contextPath}/accommodation/create">Register an accommodation fact</a></h4>--%>
+        <%--<h4 class="text-center"><a href="${contextPath}/amenityItem/create">Register an amenity item</a></h4>--%>
+        <a href="${contextPath}/route/create">Create route</a>
+        <a href="${contextPath}/admin/user">Users</a>
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
     </c:if>
   </div>
