@@ -22,4 +22,20 @@ public class Room {
     public int getNumber() {
         return this.number;
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }

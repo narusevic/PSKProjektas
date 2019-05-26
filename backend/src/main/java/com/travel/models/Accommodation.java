@@ -19,6 +19,8 @@ public class Accommodation {
     private String name;
     @ManyToOne
     private Location location;
+    @ManyToOne
+    private Route route;
 
     public Accommodation() {
     }
@@ -29,6 +31,7 @@ public class Accommodation {
         this.price = price;
         this.name = name;
         this.location = location;
+        this.users = users;
     }
 
     public long getId() {

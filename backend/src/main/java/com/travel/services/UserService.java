@@ -1,9 +1,10 @@
 package com.travel.services;
 
+import com.travel.models.User;
+
 import java.util.List;
 import java.util.Set;
 
-import com.travel.models.User;
 
 public interface UserService {
     void save(User user);

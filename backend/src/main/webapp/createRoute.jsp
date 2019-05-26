@@ -33,18 +33,20 @@
                     <form:input type="date" path="arrivalTime" class="form-control" placeholder="Arrival"></form:input>
                 </div>
             </spring:bind>
-            <%-- To be implemented after Location is implemented --%>
-            <%-- <spring:bind path="startPlace">
+             <spring:bind path="from">
                 <div class="form-group">
-                    <form:input type="text" path="startPlace" class="form-control" placeholder="Origin"></form:input>
+                    <form:select path="from">
+                        <form:options items="${locations}" itemValue="id" itemLabel="city"></form:options>
+                    </form:select>
                 </div>
             </spring:bind>
-            <spring:bind path="destination">
+            <spring:bind path="to">
                 <div class="form-group">
-                    <form:input type="text" path="destination" class="form-control" placeholder="Destination"></form:input>
+                    <form:select path="to">
+                        <form:options items="${locations}" itemValue="id" itemLabel="city"></form:options>
+                    </form:select>
                 </div>
-            </spring:bind> --%>
-
+            </spring:bind>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </form:form>
 

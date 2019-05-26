@@ -27,6 +27,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizer")
     private Set<Trip> organizedTrips;
 
+    @ManyToMany
+    private Set<Accommodation> accommodations;
+
     public Long getId() {
         return id;
     }
@@ -86,5 +89,13 @@ public class User {
     @Override
     public String toString() {
         return this.getEmail();
+    }
+
+    public Set<Accommodation> getAccommodations() {
+        return accommodations;
+    }
+
+    public void setAccommodations(Set<Accommodation> accommodations) {
+        this.accommodations = accommodations;
     }
 }

@@ -1,6 +1,8 @@
 package com.travel.services;
 
 import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Optional;
 
 import com.travel.models.Route;
 import com.travel.repositories.RouteRepository;
@@ -28,5 +30,21 @@ public class RouteServiceImpl implements RouteService {
         }
 
         tripRepository.save(route);
+    }
+
+    @Override
+    public List<Route> findAll() {
+        return tripRepository.findAll();
+    }
+
+    @Override
+    public Route findById(Long id) {
+
+        Optional<Route> optionalRoute = tripRepository.findById(id);
+        if(optionalRoute.isPresent()){
+            return optionalRoute.get();
+        }
+
+        return null;
     }
 }

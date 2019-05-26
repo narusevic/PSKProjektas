@@ -44,7 +44,7 @@ public class Location {
     }
 
     public boolean isDevBridge() {
-        return isDevBridge;
+        return this.isDevBridge;
     }
 
     public Set<Room> getRooms() {

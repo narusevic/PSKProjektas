@@ -4,15 +4,18 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="service_items")
-public class ServiceItem {
+@Table(name="amenity_items")
+public class AmenityItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne
-    private Service service;
+    private Amenity amenity;
+    @ManyToOne
+    private Route route;
+
     private boolean isConfirmed;
     private BigDecimal price;
     private String comment;
@@ -21,8 +24,8 @@ public class ServiceItem {
         return this.id;
     }
 
-    public Service getService() {
-        return this.service;
+    public Amenity getAmenity() {
+        return this.amenity;
     }
 
     public boolean isConfirmed() {
@@ -35,5 +38,21 @@ public class ServiceItem {
 
     public String getComment() {
         return this.comment;
+    }
+
+    public void setAmenity(Amenity amenity) {
+        this.amenity = amenity;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        isConfirmed = confirmed;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
