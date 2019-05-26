@@ -29,6 +29,7 @@ public class Accommodation {
         this.price = price;
         this.name = name;
         this.location = location;
+        this.users = users;
     }
 
     public long getId() {

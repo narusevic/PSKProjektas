@@ -13,6 +13,7 @@ public class AmenityItem {
 
     @ManyToOne
     private Amenity amenity;
+
     private boolean isConfirmed;
     private BigDecimal price;
     private String comment;
@@ -35,5 +36,21 @@ public class AmenityItem {
 
     public String getComment() {
         return this.comment;
+    }
+
+    public void setAmenity(Amenity amenity) {
+        this.amenity = amenity;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        isConfirmed = confirmed;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

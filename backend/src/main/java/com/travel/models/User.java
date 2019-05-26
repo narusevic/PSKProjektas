@@ -24,6 +24,9 @@ public class User {
     @ManyToMany
     private Set<Trip> trips;
 
+    @ManyToMany
+    private Set<Accommodation> accommodations;
+
     public Long getId() {
         return id;
     }
@@ -70,5 +73,13 @@ public class User {
 
     public void setTrips(Set<Trip> trips) {
         this.trips = trips;
+    }
+
+    public Set<Accommodation> getAccommodations() {
+        return accommodations;
+    }
+
+    public void setAccommodations(Set<Accommodation> accommodations) {
+        this.accommodations = accommodations;
     }
 }

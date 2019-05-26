@@ -50,12 +50,6 @@ public class RouteController {
 
     @PostMapping("/route/create/{tripId}")
     public String create(@ModelAttribute("userForm") Route routeForm, @PathVariable String tripId, BindingResult bindingResult) {
-        // TODO: Implement location service
-        // Location startPlace = new Location();
-        // Location destination = new Location();
-        // tripForm.setStartPlace(startPlace);
-        // tripForm.setDestination(destination);
-
         Trip trip = tripService.findById(Long.parseLong(tripId));
 
         routeForm.setAccommodations(new HashSet<Accommodation>());

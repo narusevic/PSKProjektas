@@ -5,11 +5,13 @@ import com.travel.repositories.AmenityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 @Service
 public class AmenityServiceImpl implements AmenityService {
+
     @Autowired
     private AmenityRepository amenityRepository;
 
@@ -31,5 +33,10 @@ public class AmenityServiceImpl implements AmenityService {
     @Override
     public Set<Amenity> findByDescription(String description) {
         return amenityRepository.findByDescription(description);
+    }
+
+    @Override
+    public List<Amenity> findAll() {
+        return amenityRepository.findAll();
     }
 }
