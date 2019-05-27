@@ -38,13 +38,12 @@ public class TripController {
     @GetMapping("/trip")
     public String getTrips(Model model, Principal principal) {
         User user = userService.findByEmail(principal.getName());
-        List<Trip> trips = tripService.findByOrganizerId(user.getId());
-        System.out.println(trips);
+        List<Trip> trips = tripService.findAll();
         model.addAttribute("trips", trips);
 
         return "tripsList";
     }
- 
+
     @PreAuthorize("hasAuthority('ORGANIZER')")
     @PostMapping("/trip/create")
     public String create(@ModelAttribute("tripForm") Trip tripForm, BindingResult bindingResult, Principal principal) {
