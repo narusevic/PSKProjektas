@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -29,6 +30,14 @@ public class RouteController {
 
     @Autowired
     private LocationService locationService;
+
+    @GetMapping("/route")
+    public String getRoutes(Model model, Principal principal) {
+        List<Route> routes = routeService.findAll();
+        model.addAttribute("routes", routes);
+
+        return "routesList";
+    }
 
     // TODO: add acl
     @PreAuthorize("hasAuthority('ORGANIZER')")
