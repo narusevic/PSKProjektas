@@ -8,4 +8,5 @@ public interface RouteService {
     void save(Route trip);
     List<Route> findAll();
     Route findById(Long id);
+    void deleteById(Long id);
 }

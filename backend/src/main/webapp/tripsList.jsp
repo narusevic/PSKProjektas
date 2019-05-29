@@ -65,7 +65,7 @@
                 <!-- Breadcrumbs-->
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#">Organiser</a>
+                        <a href="${contextPath}/trips">Organiser</a>
                     </li>
                     <li class="breadcrumb-item active">All trips</li>
                 </ol>
@@ -100,7 +100,7 @@
                                         <td>${trip.arrivalTime}</td>
                                         <td>${trip.status}</td>
                                         <td><a href="${contextPath}/route/create/${trip.id}" class="btn btn-outline-primary">Create route for trip</a></td>
-                                        <td><a href="${contextPath}/tripInfo/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
+                                        <td><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
