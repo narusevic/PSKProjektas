@@ -4,11 +4,7 @@ import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 
-import com.travel.models.Location;
-import com.travel.models.Route;
-import com.travel.models.Status;
-import com.travel.models.Trip;
-import com.travel.models.User;
+import com.travel.models.*;
 import com.travel.services.TripService;
 import com.travel.services.UserService;
 
@@ -39,8 +35,10 @@ public class TripController {
     public String getTrips(Model model, Principal principal) {
         User user = userService.findByEmail(principal.getName());
         List<Trip> trips = tripService.findAll();
+        List<User> participants = userService.findAll();
+        model.addAttribute("participantForm", new UserTrip());
         model.addAttribute("trips", trips);
-
+        model.addAttribute("participants", participants);
         return "tripsList";
     }
 
