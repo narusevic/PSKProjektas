@@ -54,6 +54,10 @@
                     My Trips
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${contextPath}/route">
+                    Routes</a>
+            </li>
         </ul>
 
         <div id="content-wrapper">

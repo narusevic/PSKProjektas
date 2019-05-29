@@ -18,6 +18,7 @@
         <h4 class="text-center"><a href="${contextPath}/trip/create">CreateTrip</a></h4>
         <h4 class="text-center"><a href="${contextPath}/trip/">Trips List</a></h4>
         <h4 class="text-center"><a href="${contextPath}/trip/my">Trips I participate in</a></h4>
+        <h4 class="text-center"><a href="${contextPath}/route">Routes</a></h4>
         <%--<h4 class="text-center"><a href="${contextPath}/amenity/create">Register an amenity (service)</a></h4>--%>
         <%--<h4 class="text-center"><a href="${contextPath}/accommodation/create">Register an accommodation fact</a></h4>--%>
         <%--<h4 class="text-center"><a href="${contextPath}/amenityItem/create">Register an amenity item</a></h4>--%>
