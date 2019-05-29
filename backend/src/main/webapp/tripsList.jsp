@@ -100,7 +100,7 @@
                                         <td>${trip.arrivalTime}</td>
                                         <td>${trip.status}</td>
                                         <td><a href="${contextPath}/route/create/${trip.id}" class="btn btn-outline-primary">Create route for trip</a></td>
-                                        <td><a href="${contextPath}/route/tripInfo/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
+                                        <td><a href="${contextPath}/tripInfo/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

@@ -108,8 +108,4 @@ public class TripController {
 
         return "redirect:/trip";
     }
-    @GetMapping("/organizer")
-    public String createOrganizer(Model model) {
-        return "organizerDashboard";
-    }
 }
