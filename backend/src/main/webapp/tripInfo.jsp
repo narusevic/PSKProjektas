@@ -1,8 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,48 +69,67 @@
                     <li class="breadcrumb-item">
                         <a href="#">Organiser</a>
                     </li>
-                    <li class="breadcrumb-item active">Trip</li>
+                    <li class="breadcrumb-item active">Trip Info</li>
                 </ol>
 
-                <!-- DataTables Example -->
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-table"></i>
-                        All trips</div>
+                        Detailed Info</div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">From</li>
+                        </ol>
+                        ${trip.startPlace.getCity()}
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">To</li>
+                        </ol>
+                        ${trip.destination.getCity()}
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">Description</li>
+                        </ol>
+                            ${trip.description}
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">Departure time</li>
+                        </ol>
+                            ${trip.departureTime}
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">Arrival Time</li>
+                        </ol>
+                            ${trip.arrivalTime}
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">Status</li>
+                        </ol>
+                            ${trip.status} 
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>From City</th>
+                                <th>To City</th>
+                                <th>Departure Time</th>
+                                <th>Arrival Time</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="route" items="${trip.getRoutes()}">
                                 <tr>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Description</th>
-                                    <th>Departure Time</th>
-                                    <th>Arrival Time</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                    <th></th>
+                                    <td>${route.getFrom()}</td>
+                                    <td>${route.getTo()}</td>
+                                    <td>${route.getDepartureTime()}</td>
+                                    <td>${trip.getArrivalTime()}</td>
+                                    <td><a href="${contextPath}/route/${route.getId()}" class="btn btn-outline-primary">Show route info</a></td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    <td>${trip.startPlace.getCity()}</td>
-                                    <td>${trip.destination.getCity()}</td>
-                                    <td>${trip.description}</td>
-                                    <td>${trip.departureTime}</td>
-                                    <td>${trip.arrivalTime}</td>
-                                    <td>${trip.status}</td>
-                                    <td><a href="${contextPath}/route/create/${trip.id}" class="btn btn-outline-primary">Create route for trip</a></td>
-                                    <td><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+  </div>
+    </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -132,6 +149,4 @@
 
     <!-- Demo scripts for this page-->
     <script src="${contextPath}/resources/js/demo/datatables-demo.js"></script>
-
-  </body>
 </html>

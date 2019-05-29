@@ -7,7 +7,7 @@
 <html lang="en">
   <head>
       <meta charset="utf-8">
-      <title>Create trip</title>
+      <title>View All Trips</title>
 
       <!-- Custom fonts for this template-->
       <link href="${contextPath}/resources/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -69,7 +69,7 @@
                 <!-- Breadcrumbs-->
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#">Organiser</a>
+                        <a href="${contextPath}/trips">Organiser</a>
                     </li>
                     <li class="breadcrumb-item active">All trips</li>
                 </ol>
