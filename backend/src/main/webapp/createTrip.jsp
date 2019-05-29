@@ -16,8 +16,6 @@
 
     <title>Create trip</title>
 
-
-
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -79,6 +77,10 @@
         <li class="nav-item">
             <a class="nav-link" href="${contextPath}/admin/user">
                 <span>Users</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/route">
+                Routes</a>
         </li>
     </ul>
 

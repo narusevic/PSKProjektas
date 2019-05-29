@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="fn" uri="WEB-INF/custom.tld"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -90,6 +89,11 @@
             <a class="nav-link" href="${contextPath}/admin/user">
                 Users</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/route">
+                Routes</a>
+        </li>
+
     </ul>
 
     <div id="content-wrapper">
