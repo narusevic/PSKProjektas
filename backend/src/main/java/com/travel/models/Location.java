@@ -18,6 +18,9 @@ public class Location {
     @Nullable
     @OneToMany(mappedBy = "location")
     private Set<Room> rooms;
+    @Nullable
+    @OneToMany(mappedBy = "location")
+    private Set<Accommodation> accommodations;
 
     public long getId() {
         return id;
@@ -49,5 +52,17 @@ public class Location {
 
     public Set<Room> getRooms() {
         return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public Set<Accommodation> getAccomodations() {
+        return this.accommodations;
+    }
+
+    public void setAccomodations(Set<Accommodation> accommodations) {
+        this.accommodations = accommodations;
     }
 }

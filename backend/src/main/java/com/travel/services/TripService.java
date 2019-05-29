@@ -10,4 +10,5 @@ public interface TripService {
     List<Trip> findAll();
     List<Trip> findByOrganizerId(Long id);
     void deleteById(Long id);
+    void merge(Long id, Long mergedId);
 }

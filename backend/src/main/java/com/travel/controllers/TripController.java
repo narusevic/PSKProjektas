@@ -122,4 +122,16 @@ public class TripController {
 
         return "redirect:/trip";
     }
+  
+    @GetMapping("/organizer")
+    public String createOrganizer(Model model) {
+        return "organizerDashboard";
+    }
+
+    @PostMapping("/trip/merge/{tripId}/{mergedTripId}")
+    public String create(@PathVariable String tripId, @PathVariable String mergedTripId) {
+        tripService.merge(Long.parseLong(tripId), Long.parseLong(mergedTripId));
+
+        return "redirect:/trip";
+    }
 }

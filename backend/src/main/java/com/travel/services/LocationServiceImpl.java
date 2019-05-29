@@ -1,10 +1,16 @@
 package com.travel.services;
 
+import com.travel.models.Accommodation;
 import com.travel.models.Location;
+import com.travel.models.Room;
+import com.travel.models.UserAccommodation;
 import com.travel.repositories.LocationRepository;
+import com.travel.repositories.UserAccommodationRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -13,6 +19,8 @@ import java.util.Set;
 public class LocationServiceImpl implements LocationService {
     @Autowired
     private LocationRepository locationRepository;
+    @Autowired
+    private UserAccommodationRepository userAccommodationRepository;
 
     @Override
     public List<Location> findAll(){
@@ -42,5 +50,32 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public void save(Location location) {
         locationRepository.save(location);
+    }
+
+    @Override
+    public Integer isAvailable(Long locationId, Date from, Date to) {
+        Optional<Location> locationOpt = locationRepository.findById(locationId);
+        Integer result = 0;
+
+        if (!locationOpt.isPresent()) {
+            return result;
+        }
+
+        Location location = locationOpt.get();
+
+        for (Accommodation accommodation: location.getAccomodations()) {
+            List<UserAccommodation> fromUserAccomodations = userAccommodationRepository.findAllByFromBetweenAndAccommodation(from, to, accommodation);
+            List<UserAccommodation> toUserAccomodations = userAccommodationRepository.findAllByFromBetweenAndAccommodation(from, to, accommodation);
+
+            for (UserAccommodation userAccomodation: toUserAccomodations){
+                if (!fromUserAccomodations.contains(userAccomodation)) {
+                    fromUserAccomodations.add(userAccomodation);
+                }
+            }
+
+            result += fromUserAccomodations.size();
+        }
+
+        return result;
     }
 }
