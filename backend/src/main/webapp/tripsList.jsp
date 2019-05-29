@@ -8,7 +8,7 @@
   <head>
       <meta charset="utf-8">
       <title>Create trip</title>
-      
+
       <!-- Custom fonts for this template-->
       <link href="${contextPath}/resources/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
 
@@ -113,6 +113,15 @@
                     </div>
                 </div>
             </div>
+        <form:form action="${contextPath}/trip/addParticipant/${trip.id}" method="POST" modelAttribute="participantForm" class="participant-trip">
+            <spring:bind path="user">
+                <form:select path="user">
+                    <form:option value="NONE">User email</form:option>
+                    <form:options items="${participants}" itemLabel="email"></form:options>
+                </form:select>
+            </spring:bind>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add User</button>
+        </form:form>
         </div>
     </div>
 
