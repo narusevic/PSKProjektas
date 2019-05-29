@@ -1,0 +1,6 @@
+td.details-control {
+    cursor: pointer;
+}
+tr.shown td.details-control {
+}
+

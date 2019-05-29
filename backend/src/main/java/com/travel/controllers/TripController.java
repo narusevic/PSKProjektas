@@ -4,7 +4,6 @@ import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import com.travel.models.Location;
 import com.travel.models.Route;
 import com.travel.models.Status;
@@ -48,12 +47,11 @@ public class TripController {
     @GetMapping("/trip")
     public String getTrips(Model model, Principal principal) {
         User user = userService.findByEmail(principal.getName());
-        List<Trip> trips = tripService.findByOrganizerId(user.getId());
+        List<Trip> trips = tripService.findAll();
         List<User> participants = userService.findAll();
         model.addAttribute("participantForm", new UserTrip());
         model.addAttribute("trips", trips);
         model.addAttribute("participants", participants);
-
         return "tripsList";
     }
 
