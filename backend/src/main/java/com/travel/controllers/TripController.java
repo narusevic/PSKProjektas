@@ -76,12 +76,11 @@ public class TripController {
 
         return "participantTrips";
     }
-    
+
     @GetMapping("/trip/{tripId}")
     public String getTripInfo(Model model, @PathVariable String tripId, Principal principal) {
         Trip trip = tripService.findById(Long.parseLong(tripId));
         model.addAttribute("trip", trip);
-
         return "tripInfo";
     }
 
@@ -123,6 +122,7 @@ public class TripController {
 
         return "redirect:/trip";
     }
+  
     @GetMapping("/organizer")
     public String createOrganizer(Model model) {
         return "organizerDashboard";
