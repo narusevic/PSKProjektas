@@ -21,6 +21,8 @@ public class Accommodation {
     private Location location;
     @ManyToOne
     private Route route;
+    @OneToMany
+    private Set<UserAccommodation> userAccommodations;
 
     public Accommodation() {
     }
@@ -72,5 +74,13 @@ public class Accommodation {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Set<UserAccommodation> getUserAccommodations() {
+        return userAccommodations;
+    }
+
+    public void setUserAccommodations(Set<UserAccommodation> userAccommodations) {
+        this.userAccommodations = userAccommodations;
     }
 }

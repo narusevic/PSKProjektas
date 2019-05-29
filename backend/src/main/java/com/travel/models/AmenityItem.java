@@ -40,6 +40,10 @@ public class AmenityItem {
         return this.comment;
     }
 
+    public Route getRoute() {
+        return this.route;
+    }
+
     public void setAmenity(Amenity amenity) {
         this.amenity = amenity;
     }
@@ -54,5 +58,9 @@ public class AmenityItem {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

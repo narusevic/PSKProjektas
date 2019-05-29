@@ -49,11 +49,13 @@ public class AmenityItemController {
     }
 
     @PostMapping("amenityItem/create/{routeId}")
-    public String createAmenityItem(@ModelAttribute("amenityItemForm") AmenityItem amenityItem, BindingResult bindingResult) {
+    public String createAmenityItem(@ModelAttribute("amenityItemForm") AmenityItem amenityItem, @PathVariable String routeId, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "createAmenityItem";
         }
 
+        Route route = routeService.findById(Long.parseLong(routeId));
+        amenityItem.setRoute(route);
         amenityItemService.save(amenityItem);
 
         return "redirect:/welcome";

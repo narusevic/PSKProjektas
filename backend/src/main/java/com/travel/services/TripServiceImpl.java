@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.travel.models.Trip;
+import com.travel.models.UserTrip;
 import com.travel.repositories.TripRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,24 @@ public class TripServiceImpl implements TripService {
     @Override
     public void deleteById(Long id) {
         tripRepository.deleteById(id);
+    }
+
+    @Override
+    public void merge(Long id, Long mergedId) {
+        Optional<Trip> tripOpt = tripRepository.findById(id);
+        Optional<Trip> mergedTripOpt = tripRepository.findById(mergedId);
+
+        if (!mergedTripOpt.isPresent() || !tripOpt.isPresent()) {
+            return;
+        }
+
+        Trip mergedTrip = mergedTripOpt.get();
+        Trip trip = tripOpt.get();
+
+        Set<UserTrip> userTrips = mergedTrip.getUserTrips();
+        trip.getUserTrips().addAll(userTrips);
+
+        tripRepository.save(trip);
+        tripRepository.deleteById(mergedId);
     }
 }
