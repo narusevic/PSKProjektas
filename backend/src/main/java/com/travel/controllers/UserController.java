@@ -1,10 +1,8 @@
 package com.travel.controllers;
 
 import java.util.List;
-import java.util.Set;
 
 import com.travel.models.Invitation;
-import com.travel.models.Role;
 import com.travel.models.User;
 import com.travel.services.InvitationService;
 import com.travel.services.SecurityService;
@@ -105,6 +103,7 @@ public class UserController {
             return "registration";
         }
 
+        invitationService.deleteById(invitation.getId());
         userService.save(userForm);
 
         securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());

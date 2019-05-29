@@ -22,7 +22,6 @@
       <link href="${contextPath}/resources/css/custom.css" rel="stylesheet">
 
   </head>
-
   <body>
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -91,11 +90,9 @@
                                     <th></th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
                                 <c:forEach var="trip" items="${trips}">
                                     <tr>
-
                                         <td>${trip.startPlace.getCity()}</td>
                                         <td>${trip.destination.getCity()}</td>
                                         <td>${trip.description}</td>
@@ -106,25 +103,14 @@
                                         <td><a href="${contextPath}/route/tripInfo/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
                                     </tr>
                                 </c:forEach>
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        <form:form action="${contextPath}/trip/addParticipant/${trip.id}" method="POST" modelAttribute="participantForm" class="participant-trip">
-            <spring:bind path="user">
-                <form:select path="user">
-                    <form:option value="NONE">User email</form:option>
-                    <form:options items="${participants}" itemLabel="email"></form:options>
-                </form:select>
-            </spring:bind>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Add User</button>
-        </form:form>
         </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

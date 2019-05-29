@@ -21,6 +21,7 @@
 
       <!-- Custom styles for this template-->
       <link href="${contextPath}/resources/css/sb-admin.css" rel="stylesheet">
+
   </head>
 
   <body class="bg-dark">
@@ -31,7 +32,7 @@
           <div class="card-body">
               <form method="POST" action="${contextPath}/login" class="form-signin">
                   <div class="form-group ${error != null ? 'has-error' : ''}">
-                      <span>${message}</span>
+                      <span style="color: #007bff;">${message}</span>
                       <div class="form-label-group">
                           <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="true">
                           <label for="inputEmail">Email Address</label>

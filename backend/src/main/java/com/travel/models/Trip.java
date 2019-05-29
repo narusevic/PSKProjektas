@@ -18,11 +18,11 @@ public class Trip {
     
     private String description;
 
-    @OneToMany(mappedBy = "trip")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trip")
     private Set<Route> routes;
 
-    @ManyToMany(mappedBy = "trips")
-    private Set<User> users;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trip")
+    private Set<UserTrip> userTrips;
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -64,12 +64,12 @@ public class Trip {
         this.routes = routes;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<UserTrip> getUserTrips() {
+        return userTrips;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUserTrips(Set<UserTrip> userTrips) {
+        this.userTrips = userTrips;
     }
 
     public Status getStatus() {

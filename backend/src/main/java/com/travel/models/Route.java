@@ -23,9 +23,9 @@ public class Route {
     private Date departureTime;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date arrivalTime;
-    @OneToMany
-    private Set<ServiceItem> checkList;
-    @OneToMany
+    @OneToMany(mappedBy = "route")
+    private Set<AmenityItem> checkList;
+    @OneToMany(mappedBy = "route")
     private Set<Accommodation> accommodations;
 
     @ManyToMany
@@ -70,11 +70,11 @@ public class Route {
         this.arrivalTime = arrivalTime;
     }
 
-    public Set<ServiceItem> getCheckList() {
+    public Set<AmenityItem> getCheckList() {
         return this.checkList;
     }
 
-    public void setCheckList(Set<ServiceItem> checkList) {
+    public void setCheckList(Set<AmenityItem> checkList) {
         this.checkList = checkList;
     }
 
@@ -97,7 +97,7 @@ public class Route {
     public Trip getTrip() {
         return this.trip;
     }
-    
+
     public void setTrip(Trip trip) {
         this.trip = trip;
     }

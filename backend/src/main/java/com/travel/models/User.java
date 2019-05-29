@@ -21,8 +21,14 @@ public class User {
     @ManyToMany
     private Set<Role> roles;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<UserTrip> userTrips;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizer")
+    private Set<Trip> organizedTrips;
+
     @ManyToMany
-    private Set<Trip> trips;
+    private Set<Accommodation> accommodations;
 
     public Long getId() {
         return id;
@@ -64,11 +70,32 @@ public class User {
         this.roles = roles;
     }
 
-    public Set<Trip> getTrips() {
-        return this.trips;
+    public Set<UserTrip> getUserTrips() {
+        return this.userTrips;
     }
 
-    public void setTrips(Set<Trip> trips) {
-        this.trips = trips;
+    public void setUserTrips(Set<UserTrip> userTrips) {
+        this.userTrips = userTrips;
+    }
+
+    public Set<Trip> getOrganizedTrips() {
+        return this.organizedTrips;
+    }
+
+    public void setOrganizedTrips(Set<Trip> organizedTrips) {
+        this.organizedTrips = organizedTrips;
+    }
+
+    @Override
+    public String toString() {
+        return this.getEmail();
+    }
+
+    public Set<Accommodation> getAccommodations() {
+        return accommodations;
+    }
+
+    public void setAccommodations(Set<Accommodation> accommodations) {
+        this.accommodations = accommodations;
     }
 }
