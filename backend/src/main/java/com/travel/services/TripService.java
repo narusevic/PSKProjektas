@@ -9,4 +9,5 @@ public interface TripService {
     Trip findById(Long id);
     List<Trip> findAll();
     List<Trip> findByOrganizerId(Long id);
+    void deleteById(Long id);
 }

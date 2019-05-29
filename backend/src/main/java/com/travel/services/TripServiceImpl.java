@@ -64,4 +64,9 @@ public class TripServiceImpl implements TripService {
 
         return organizerTrips;
     }
+
+    @Override
+    public void deleteById(Long id) {
+        tripRepository.deleteById(id);
+    }
 }

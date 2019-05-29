@@ -67,7 +67,7 @@
                     <li class="breadcrumb-item">
                         <a href="#">Organiser</a>
                     </li>
-                    <li class="breadcrumb-item active">All trips</li>
+                    <li class="breadcrumb-item active">Trip</li>
                 </ol>
 
                 <!-- DataTables Example -->
@@ -91,18 +91,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="trip" items="${trips}">
                                     <tr>
-                                        <td>${trip.startPlace.getCity()}</td>
-                                        <td>${trip.destination.getCity()}</td>
-                                        <td>${trip.description}</td>
-                                        <td>${trip.departureTime}</td>
-                                        <td>${trip.arrivalTime}</td>
-                                        <td>${trip.status}</td>
-                                        <td><a href="${contextPath}/route/create/${trip.id}" class="btn btn-outline-primary">Create route for trip</a></td>
-                                        <td><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
+                                    <td>${trip.startPlace.getCity()}</td>
+                                    <td>${trip.destination.getCity()}</td>
+                                    <td>${trip.description}</td>
+                                    <td>${trip.departureTime}</td>
+                                    <td>${trip.arrivalTime}</td>
+                                    <td>${trip.status}</td>
+                                    <td><a href="${contextPath}/route/create/${trip.id}" class="btn btn-outline-primary">Create route for trip</a></td>
+                                    <td><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
                                     </tr>
-                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

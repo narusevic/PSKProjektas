@@ -50,6 +50,14 @@ public class RouteController {
     }
 
     @PreAuthorize("hasAuthority('ORGANIZER')")
+    @GetMapping("/route/delete/{routeId}")
+    public String create(@PathVariable String routeId) {
+        routeService.deleteById(Long.parseLong(routeId));
+        
+        return "redirect:/trip";
+    }
+
+    @PreAuthorize("hasAuthority('ORGANIZER')")
     @PostMapping("/route/create/{tripId}")
     public String create(@ModelAttribute("userForm") Route routeForm, @PathVariable String tripId, BindingResult bindingResult) {
         Trip trip = tripService.findById(Long.parseLong(tripId));
