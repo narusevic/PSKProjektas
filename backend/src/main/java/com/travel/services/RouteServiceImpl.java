@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RouteServiceImpl implements RouteService {
     @Autowired
-    private RouteRepository tripRepository;
+    private RouteRepository routeRepository;
 
     @Override
     public void save(Route route) {
@@ -29,22 +29,27 @@ public class RouteServiceImpl implements RouteService {
             System.out.printf("exception", error);
         }
 
-        tripRepository.save(route);
+        routeRepository.save(route);
     }
 
     @Override
     public List<Route> findAll() {
-        return tripRepository.findAll();
+        return routeRepository.findAll();
     }
 
     @Override
     public Route findById(Long id) {
-
-        Optional<Route> optionalRoute = tripRepository.findById(id);
+        
+        Optional<Route> optionalRoute = routeRepository.findById(id);
         if(optionalRoute.isPresent()){
             return optionalRoute.get();
         }
 
         return null;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        routeRepository.deleteById(id);
     }
 }

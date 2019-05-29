@@ -76,6 +76,21 @@ public class TripController {
 
         return "participantTrips";
     }
+    
+    @GetMapping("/trip/{tripId}")
+    public String getTripInfo(Model model, @PathVariable String tripId, Principal principal) {
+        Trip trip = tripService.findById(Long.parseLong(tripId));
+        model.addAttribute("trip", trip);
+
+        return "tripInfo";
+    }
+
+    @PostMapping("/deleteTrip/{tripId}")
+    public String deleteTrip(@PathVariable String tripId, Principal principal) {
+        tripService.deleteById(Long.parseLong(tripId));
+
+        return "redirect:/tripList";
+    }
 
     @PostMapping("/trip/approve/{tripId}")
     public String approveTrip(@PathVariable String tripId, Principal principal) {
