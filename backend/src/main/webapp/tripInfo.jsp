@@ -138,8 +138,8 @@
                                 <c:forEach var="otherTrip" items="${allTrips}">
                                     <option>From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </option>
                                 </c:forEach>
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
                             </select>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
                         </div>
                     </form:form>
                 </div>
