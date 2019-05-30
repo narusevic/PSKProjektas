@@ -100,7 +100,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">Status</li>
                         </ol>
-                            ${trip.status} 
+                            ${trip.status}
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
@@ -117,13 +117,31 @@
                                     <td>${route.getFrom()}</td>
                                     <td>${route.getTo()}</td>
                                     <td>${route.getDepartureTime()}</td>
-                                    <td>${trip.getArrivalTime()}</td>
+                                    <td>${route.getArrivalTime()}</td>
                                     <td><a href="${contextPath}/route/${route.getId()}" class="btn btn-outline-primary">Show route info</a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Merge Trips
+                    </div>
+                    <!--- Not fully fixed here --->
+                    <form:form method="POST" action="${contextPath}/merge/${trip.getId()}/" class="form-signin">
+                        <div class="form-group">
+                            <label for="sel1">Select trip to merge with:</label>
+                            <select class="form-control" id="sel1">
+                                <c:forEach var="otherTrip" items="${allTrips}">
+                                    <option>From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </option>
+                                </c:forEach>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                            </select>
+                        </div>
+                    </form:form>
                 </div>
             </div>
         </div>
