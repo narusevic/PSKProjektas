@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
       <meta charset="utf-8">
-      <title>Create trip</title>
+      <title>Create Trip</title>
 
       <!-- Custom fonts for this template-->
       <link href="${contextPath}/resources/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -41,22 +41,22 @@
         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="${contextPath}/trip/create">
-                    Create Trip
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="${contextPath}/route/create">
-                    Create Route</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="${contextPath}/trip/">
-                    My Trips
-                </a>
+                <a class="nav-link" href="${contextPath}/admin/user">
+                    <span>Users</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${contextPath}/route">
                     Routes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${contextPath}/trip/">
+                    <span>Trips</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${contextPath}/trip/create">
+                    <span>Create Trip</span>
+                </a>
             </li>
         </ul>
 
@@ -64,43 +64,50 @@
 
             <div class="container-fluid">
 
-                <!-- Breadcrumbs-->
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Organiser</a>
-                    </li>
-                    <li class="breadcrumb-item active">Trip Info</li>
-                </ol>
-
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-table"></i>
-                        Detailed Info</div>
+                        Trip details</div>
                     <div class="card-body">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">From</li>
                         </ol>
-                        ${trip.startPlace.getCity()}
+                        <div class="form-control">${trip.startPlace.getCity()}</div>
+                        <br/>
+                        <br/>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">To</li>
                         </ol>
-                        ${trip.destination.getCity()}
+                        <div class="form-control">${trip.destination.getCity()}</div>
+                        <br/>
+                        <br/>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">Description</li>
                         </ol>
-                            ${trip.description}
+                        <div class="form-control">${trip.description}</div>
+                        <br/>
+                        <br/>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">Departure time</li>
                         </ol>
-                            ${trip.departureTime}
+                        <div class="form-control">${trip.departureTime}</div>
+                        <br/>
+                        <br/>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">Arrival Time</li>
                         </ol>
-                            ${trip.arrivalTime}
+                        <div class="form-control">${trip.arrivalTime}</div>
+                        <br/>
+                        <br/>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">Status</li>
                         </ol>
-                            ${trip.status} 
+                        <div class="form-control">${trip.status}</div>
+                        <br/>
+                        <br/>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">Trip consists of this routes:</li>
+                        </ol>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
@@ -108,7 +115,7 @@
                                 <th>To City</th>
                                 <th>Departure Time</th>
                                 <th>Arrival Time</th>
-                                <th></th>
+                                <th>Show route info</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -124,29 +131,69 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
   </div>
-    </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
+        <br/>
+            <!-- Sticky Footer -->
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                    </div>
+                </div>
+            </footer>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="${contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        </div>
+        <!-- /.content-wrapper -->
 
-    <!-- Core plugin JavaScript-->
-    <script src="${contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+    </div>
+  <!-- /#wrapper -->
 
-    <!-- Page level plugin JavaScript-->
-    <script src="${contextPath}/resources/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="${contextPath}/resources/vendor/datatables/dataTables.bootstrap4.js"></script>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+  </a>
 
-    <!-- Custom scripts for all pages-->
-    <script src="${contextPath}/resources/js/sb-admin.min.js"></script>
+  <!--Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-footer">
+                  <c:if test="${pageContext.request.userPrincipal.name != null}">
+                      <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                      </form>
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                      <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a>
+                  </c:if>
+              </div>
+          </div>
+      </div>
+  </div>
 
-    <!-- Demo scripts for this page-->
-    <script src="${contextPath}/resources/js/demo/datatables-demo.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="${contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="${contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="${contextPath}/resources/vendor/datatables/jquery.dataTables.js"></script>
+  <script src="${contextPath}/resources/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="${contextPath}/resources/js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="${contextPath}/resources/js/demo/datatables-demo.js"></script>
+
+  </body>
+
 </html>

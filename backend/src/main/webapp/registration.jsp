@@ -13,7 +13,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
 
-      <title>SB Admin - Login</title>
+      <title>Registration</title>
 
       <!-- Custom fonts for this template-->
       <link href="${contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
