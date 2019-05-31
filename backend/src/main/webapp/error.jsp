@@ -55,26 +55,22 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="${contextPath}/trip/create">
-                <span>Create Trip</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="${contextPath}/trip/">
-                <span>Trip List</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="${contextPath}/route/create">
-                <span>Create Route</span></a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="${contextPath}/admin/user">
                 <span>Users</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${contextPath}/route">
                 Routes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/trip/">
+                <span>Trips</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/trip/create">
+                <span>Create Trip</span>
+            </a>
         </li>
     </ul>
 
@@ -127,8 +123,13 @@
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a>
+                </c:if>
             </div>
         </div>
     </div>

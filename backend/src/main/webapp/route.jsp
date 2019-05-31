@@ -20,10 +20,9 @@
         </c:forEach>
     </div>
     <div class="container">
-        <div>aaa</div>
-        <c:forEach var="user" items="${users}">
-            <div>Hello</div>
-            <div>${user.email}</div>
+        <c:forEach var="userAccommodation" items="${userAccommodations}">
+            <div>${userAccommodation.user.email}</div>
+            <div>${userAccommodation.accommodation.location.devBridge}</div>
         </c:forEach>
     </div>
 </body>

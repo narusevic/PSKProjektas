@@ -1,6 +1,7 @@
 package com.travel.controllers;
 
 import com.travel.models.*;
+import com.travel.repositories.UserAccommodationRepository;
 import com.travel.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,6 +31,8 @@ public class RouteController {
     private LocationService locationService;
     @Autowired
     private AccommodationService accommodationService;
+    @Autowired
+    private UserAccommodationRepository userAccommodationRepository;
 
     @GetMapping("/route")
     public String getRoutes(Model model, Principal principal) {
@@ -51,10 +54,16 @@ public class RouteController {
         for (UserTrip userTrip: userTrips) {
             users.add(userTrip.getUser());
         }
+
+        List<UserAccommodation> userAccommodations = userAccommodationRepository.findAll();
+        userAccommodations.stream()
+                .map(x-> x.getAccommodation().getRoute().getId() == route.getId())
+                .collect(Collectors.toSet());
+
         model.addAttribute("route", route);
         model.addAttribute("accommodations", accommodations);
         model.addAttribute("amenityItems", amenityItems);
-        model.addAttribute("users", users);
+        model.addAttribute("userAccommodations", userAccommodations);
 
         return "route";
     }

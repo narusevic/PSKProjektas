@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Amenity items</title>
+    <title>Amenity Items</title>
 </head>
 <body>
 <h1>Amenity items created for trips of the current user</h1>
