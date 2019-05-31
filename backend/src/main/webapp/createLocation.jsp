@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register location</title>
+    <title>Register Location</title>
 
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,26 +61,22 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="${contextPath}/trip/create">
-                <span>Create Trip</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="${contextPath}/trip/">
-                <span>Trip List</span>
-            </a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="${contextPath}/route/create">
-                <span>Create Route</span></a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="${contextPath}/admin/user">
                 <span>Users</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${contextPath}/route">
                 Routes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/trip/">
+                <span>Trips</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/trip/create">
+                <span>Create Trip</span>
+            </a>
         </li>
     </ul>
 
@@ -149,7 +145,7 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-<!-- Logout Modal-->
+<!--Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -161,8 +157,13 @@
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a>
+                </c:if>
             </div>
         </div>
     </div>
