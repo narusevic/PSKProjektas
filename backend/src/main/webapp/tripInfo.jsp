@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
       <meta charset="utf-8">
-      <title>Create Trip</title>
+      <title>Trip Info</title>
 
       <!-- Custom fonts for this template-->
       <link href="${contextPath}/resources/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
