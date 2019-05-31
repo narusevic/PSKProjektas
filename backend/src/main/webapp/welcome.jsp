@@ -24,6 +24,46 @@
     <!-- Custom styles for this template-->
     <link href="${contextPath}/resources/css/sb-admin.css" rel="stylesheet">
 
+    <style>
+        .container-fluid {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height:  100vh;
+            background: url(https://www.bearchitecture.com/wp-content/uploads/2017/04/Feature_larger-image-1.jpg) 50% 50% no-repeat;
+            background-size: cover;
+            display: table;
+        }        h1 {
+                     color: white;
+                     font-family: "Source Sans Pro";
+                     font-weight: 300;
+                     font-size: 500%;
+                     text-transform: uppercase;
+                     margin-bottom: 0;
+                     text-align: center;
+                 }
+        p {
+            color: white;
+            font-family: "Source Sans Pro";
+            font-weight: lighter;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 300%;
+            }
+            p {
+                font-size: 17px;
+                letter-spacing: 10px;
+            }
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -93,17 +133,21 @@
 
         <div class="container-fluid">
 
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Welcome</li>
-            </ol>
             <!-- Page Content -->
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <h1>DevBridge</h1>
             <p>Welcome</p>
 
-
-
         </div>
+        <br/>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
