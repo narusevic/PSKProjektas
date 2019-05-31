@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="userAccommodations")
+@Table(name="app_user_accommodations")
 public class UserAccommodation {
 
     @Id
@@ -17,8 +17,8 @@ public class UserAccommodation {
     @ManyToOne
     private Accommodation accommodation;
 
-    private Date from;
-    private Date to;
+    private Date arrivalDate;
+    private Date departureDate;
 
     public User getUser() {
         return this.user;
@@ -36,19 +36,19 @@ public class UserAccommodation {
         this.accommodation = accommodation;
     }
 
-    public Date getFrom() {
-        return this.from;
+    public Date getArrivalDate() {
+        return this.arrivalDate;
     }
 
-    public void setFrom(Date from) {
-        this.from = from;
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
     }
 
-    public Date getTo() {
-        return this.to;
+    public Date getDepartureDate() {
+        return this.departureDate;
     }
 
-    public void setTo(Date to) {
-        this.to = to;
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
     }
 }

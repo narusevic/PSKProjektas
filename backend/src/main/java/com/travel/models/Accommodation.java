@@ -2,7 +2,6 @@ package com.travel.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,27 +12,25 @@ public class Accommodation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany
-    private Set<User> users;
     private BigDecimal price;
     private String name;
     @ManyToOne
     private Location location;
+
     @ManyToOne
     private Route route;
+
     @OneToMany
-    private Set<UserAccommodation> userAccommodations;
+    private Set<UserAccommodation> userAccommodation;
 
     public Accommodation() {
     }
 
-    public Accommodation(long id, Set<User> users, BigDecimal price, String name, Location location) {
+    public Accommodation(long id, BigDecimal price, String name, Location location) {
         this.id = id;
-        this.users = users;
         this.price = price;
         this.name = name;
         this.location = location;
-        this.users = users;
     }
 
     public long getId() {
@@ -42,14 +39,6 @@ public class Accommodation {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     public BigDecimal getPrice() {
@@ -76,11 +65,19 @@ public class Accommodation {
         this.location = location;
     }
 
-    public Set<UserAccommodation> getUserAccommodations() {
-        return userAccommodations;
+    public Set<UserAccommodation> getUserAccommodation() {
+        return userAccommodation;
     }
 
-    public void setUserAccommodations(Set<UserAccommodation> userAccommodations) {
-        this.userAccommodations = userAccommodations;
+    public void setUserAccommodation(Set<UserAccommodation> userAccommodation) {
+        this.userAccommodation = userAccommodation;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

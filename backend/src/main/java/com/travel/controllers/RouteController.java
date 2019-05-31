@@ -1,10 +1,7 @@
 package com.travel.controllers;
 
 import com.travel.models.*;
-import com.travel.services.LocationService;
-import com.travel.services.TripService;
-import com.travel.services.UserService;
-import com.travel.services.RouteService;
+import com.travel.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -19,6 +16,7 @@ import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -30,6 +28,8 @@ public class RouteController {
 
     @Autowired
     private LocationService locationService;
+    @Autowired
+    private AccommodationService accommodationService;
 
     @GetMapping("/route")
     public String getRoutes(Model model, Principal principal) {
@@ -39,7 +39,26 @@ public class RouteController {
         return "routesList";
     }
 
-    // TODO: add acl
+    @GetMapping("/route/{routeId}")
+    public String getRoute(Model model, @PathVariable String routeId, Principal principal) {
+        Route route = routeService.findById(Long.parseLong(routeId));
+        Set<Accommodation> accommodations = route.getAccommodations();
+        Set<AmenityItem> amenityItems = route.getCheckList();
+        Set<UserTrip> userTrips = route.getTrip().getUserTrips();
+        userTrips = userTrips.stream()
+                .filter((userTrip) -> userTrip.getUserApproved()).collect(Collectors.toSet());
+        Set<User> users = new HashSet<User>();
+        for (UserTrip userTrip: userTrips) {
+            users.add(userTrip.getUser());
+        }
+        model.addAttribute("route", route);
+        model.addAttribute("accommodations", accommodations);
+        model.addAttribute("amenityItems", amenityItems);
+        model.addAttribute("users", users);
+
+        return "route";
+    }
+
     @PreAuthorize("hasAuthority('ORGANIZER')")
     @GetMapping("/route/create/{tripId}")
     public String create(Model model, @PathVariable String tripId) {
@@ -71,7 +90,46 @@ public class RouteController {
     public String create(@ModelAttribute("userForm") Route routeForm, @PathVariable String tripId, BindingResult bindingResult) {
         Trip trip = tripService.findById(Long.parseLong(tripId));
 
-        routeForm.setAccommodations(new HashSet<Accommodation>());
+        Set<UserTrip> userTrips = trip.getUserTrips();
+        userTrips = userTrips.stream()
+                .filter((userTrip) -> userTrip.getUserApproved()).collect(Collectors.toSet());
+        Set<User> users = new HashSet<User>();
+        for (UserTrip userTrip: userTrips) {
+            users.add(userTrip.getUser());
+        }
+
+        Set<Accommodation> accommodations = new HashSet<Accommodation>();
+
+        Location to = routeForm.getDestination();
+        int availableRooms = locationService.isAvailable(to.getId(), routeForm.getDepartureTime(), routeForm.getArrivalTime());
+
+        if(availableRooms < trip.getUserTrips().size()) {
+            Accommodation accommodationInDevBridge = new Accommodation();
+            Accommodation accommodationNotInDevBridge = new Accommodation();
+            accommodationInDevBridge.setRoute(routeForm);
+            accommodationNotInDevBridge.setRoute(routeForm);
+            Set<User> usersInDevBridgeApartment = users.stream().limit(availableRooms).collect(Collectors.toSet());
+
+            // accommodate the rest users to non-devbridge apartment.
+            for(int i = 0;i < availableRooms;i++) {
+                users.iterator().remove();
+            }
+
+            //accommodationInDevBridge.setUsers(usersInDevBridgeApartment);
+            //accommodationNotInDevBridge.setUsers(users);
+            accommodationService.save(accommodationInDevBridge);
+            accommodationService.save(accommodationNotInDevBridge);
+            accommodations.add(accommodationInDevBridge);
+            accommodations.add(accommodationNotInDevBridge);
+        }
+        else {
+            Accommodation accommodation = new Accommodation();
+            accommodationService.save(accommodation);
+            accommodations.add(accommodation);
+        }
+
+
+        routeForm.setAccommodations(accommodations);
         routeForm.setCheckList(new HashSet<AmenityItem>());
         routeForm.setMembers(new HashSet<User>());
         routeForm.setTrip(trip);

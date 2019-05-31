@@ -16,9 +16,9 @@ public class Route {
     private long id;
 
     @ManyToOne
-    private Location from;
+    private Location origin;
     @ManyToOne
-    private Location to;
+    private Location destination;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date departureTime;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -38,20 +38,20 @@ public class Route {
         return this.id;
     }
 
-    public Location getFrom() {
-        return this.from;
+    public Location getOrigin() {
+        return this.origin;
     }
 
-    public void setFrom(Location from) {
-        this.from = from;
+    public void setOrigin(Location origin) {
+        this.origin = origin;
     }
 
-    public Location getTo() {
-        return this.to;
+    public Location getDestination() {
+        return this.destination;
     }
 
-    public void setTo(Location to) {
-        this.to = to;
+    public void setDestination(Location destination) {
+        this.destination = destination;
     }
 
     public Date getDepartureTime() {

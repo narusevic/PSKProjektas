@@ -10,6 +10,5 @@ import java.util.Set;
 
 public interface AccommodationRepository extends JpaRepository<Accommodation, Long> {
     Optional<Accommodation> findById(Long id);
-    Set<Accommodation> findByUsers(Set<User> users);
     Set<Accommodation> findByLocation(Location location);
 }

@@ -114,8 +114,8 @@
                             <tbody>
                             <c:forEach var="route" items="${trip.getRoutes()}">
                                 <tr>
-                                    <td>${route.getFrom()}</td>
-                                    <td>${route.getTo()}</td>
+                                    <td>${route.getOrigin().city}</td>
+                                    <td>${route.getDestination().city}</td>
                                     <td>${route.getDepartureTime()}</td>
                                     <td>${trip.getArrivalTime()}</td>
                                     <td><a href="${contextPath}/route/${route.getId()}" class="btn btn-outline-primary">Show route info</a></td>
