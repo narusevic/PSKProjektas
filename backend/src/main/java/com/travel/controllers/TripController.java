@@ -80,7 +80,9 @@ public class TripController {
     @GetMapping("/trip/{tripId}")
     public String getTripInfo(Model model, @PathVariable String tripId, Principal principal) {
         Trip trip = tripService.findById(Long.parseLong(tripId));
+        List<Trip> allTrips = tripService.findAll();
         model.addAttribute("trip", trip);
+        model.addAttribute("allTrips", allTrips);
         return "tripInfo";
     }
 
@@ -122,7 +124,7 @@ public class TripController {
 
         return "redirect:/trip";
     }
-  
+
     @GetMapping("/organizer")
     public String createOrganizer(Model model) {
         return "organizerDashboard";
@@ -131,7 +133,6 @@ public class TripController {
     @PostMapping("/trip/merge/{tripId}/{mergedTripId}")
     public String create(@PathVariable String tripId, @PathVariable String mergedTripId) {
         tripService.merge(Long.parseLong(tripId), Long.parseLong(mergedTripId));
-
         return "redirect:/trip";
     }
 }
