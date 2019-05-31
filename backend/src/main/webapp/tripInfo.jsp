@@ -58,6 +58,11 @@
                     <span>Create Trip</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${contextPath}/trip/my">
+                    <span>My Trips</span>
+                </a>
+            </li>
         </ul>
 
         <div id="content-wrapper">

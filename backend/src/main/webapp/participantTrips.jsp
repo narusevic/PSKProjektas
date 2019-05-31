@@ -43,22 +43,27 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
           <li class="nav-item">
-              <a class="nav-link" href="${contextPath}/trip/create">
-                  Create Trip
-              </a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="${contextPath}/route/create">
-                  Create Route</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="${contextPath}/trip/">
-                  My Trips
-              </a>
+              <a class="nav-link" href="${contextPath}/admin/user">
+                  <span>Users</span></a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="${contextPath}/route">
                   Routes</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="${contextPath}/trip/">
+                  <span>Trips</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="${contextPath}/trip/create">
+                  <span>Create Trip</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="${contextPath}/trip/my">
+                  <span>My Trips</span>
+              </a>
           </li>
       </ul>
 
