@@ -132,7 +132,7 @@
                                         <td>${route.destination.city}</td>
                                         <td>${route.departureTime}</td>
                                         <td>${route.arrivalTime}</td>
-                                        <td align="center"><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info">More info</a></td>
+                                        <td align="center"><a href="${contextPath}/route/${route.id}" class="btn btn-outline-info">More info</a></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
