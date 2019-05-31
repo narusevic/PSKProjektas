@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>View All Trips</title>
+    <title>Participant Trips</title>
 
     <!-- Custom fonts for this template-->
     <link href="${contextPath}/resources/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -22,7 +22,6 @@
     <link href="${contextPath}/resources/css/custom.css" rel="stylesheet">
 
 </head>
-
   <body>
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
