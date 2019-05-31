@@ -68,14 +68,19 @@
             <a class="nav-link" href="${contextPath}/route">
                 Routes</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="${contextPath}/trip/">
                 <span>Trips</span>
             </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="${contextPath}/trip/create">
                 <span>Create Trip</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/trip/my">
+                <span>My Trips</span>
             </a>
         </li>
     </ul>

@@ -115,13 +115,12 @@
                 <span>Create Trip</span>
             </a>
         </li>
-            <%--
-           <li class="nav-item">
-               <a class="nav-link" href="${contextPath}/trip/my">
-                   <span>Trips I participate in</span>
-               </a>
-           </li>
-           --%>
+        <li class="nav-item">
+          <a class="nav-link" href="${contextPath}/trip/my">
+              <span>My Trips</span>
+          </a>
+        </li>
+
 
            <%--<h4 class="text-center"><a href="${contextPath}/amenity/create">Register an amenity (service)</a></h4>--%>
         <%--<h4 class="text-center"><a href="${contextPath}/accommodation/create">Register an accommodation fact</a></h4>--%>

@@ -58,6 +58,11 @@
                     <span>Create Trip</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${contextPath}/trip/my">
+                    <span>My Trips</span>
+                </a>
+            </li>
         </ul>
 
         <div id="content-wrapper">
@@ -124,7 +129,7 @@
                                     <td>${route.getFrom()}</td>
                                     <td>${route.getTo()}</td>
                                     <td>${route.getDepartureTime()}</td>
-                                    <td>${trip.getArrivalTime()}</td>
+                                    <td>${route.getArrivalTime()}</td>
                                     <td><a href="${contextPath}/route/${route.getId()}" class="btn btn-outline-primary">Show route info</a></td>
                                 </tr>
                             </c:forEach>
@@ -134,14 +139,33 @@
   </div>
   </div>
         <br/>
-            <!-- Sticky Footer -->
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Merge Trips
                     </div>
+                    <!--- Not fully fixed here --->
+                    <form:form method="POST" action="${contextPath}/merge/${trip.getId()}/" class="form-signin">
+                        <div class="form-group">
+                            <label for="sel1">Select trip to merge with:</label>
+                            <select class="form-control" id="sel1">
+                                <c:forEach var="otherTrip" items="${allTrips}">
+                                    <option>From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </option>
+                                </c:forEach>
+                            </select>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                        </div>
+                    </form:form>
                 </div>
-            </footer>
+            </div>
 
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                </div>
+            </div>
+        </footer>
         </div>
         <!-- /.content-wrapper -->
 
