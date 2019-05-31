@@ -128,8 +128,8 @@
                             <tbody>
                                 <c:forEach var="route" items="${routes}">
                                     <tr>
-                                        <td>${route.from.city}</td>
-                                        <td>${route.to.city}</td>
+                                        <td>${route.origin.city}</td>
+                                        <td>${route.destination.city}</td>
                                         <td>${route.departureTime}</td>
                                         <td>${route.arrivalTime}</td>
                                         <td align="center"><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info">More info</a></td>

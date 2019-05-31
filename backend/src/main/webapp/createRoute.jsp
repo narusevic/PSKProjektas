@@ -10,7 +10,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-departureDate-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -113,9 +113,9 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">From</li>
                         </ol>
-                        <spring:bind path="from">
+                        <spring:bind path="origin">
                             <div>
-                                <form:select path="from" class="form-control">
+                                <form:select path="origin" class="form-control">
                                     <form:options items="${locations}" itemValue="id" itemLabel="city"></form:options>
                                 </form:select>
                             </div>
@@ -125,9 +125,9 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active">To</li>
                         </ol>
-                        <spring:bind path="to">
+                        <spring:bind path="destination">
                             <div>
-                                <form:select path="to" class="form-control">
+                                <form:select path="destination" class="form-control">
                                     <form:options items="${locations}" itemValue="id" itemLabel="city"></form:options>
                                 </form:select>
                             </div>
@@ -155,8 +155,8 @@
 </div>
 <!-- /#wrapper -->
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
+<!-- Scroll departureDate Top Button-->
+<a class="scroll-departureDate-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
 
@@ -165,12 +165,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ready departureDate Leave?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Select "Logout" below if you are ready departureDate end your current session.</div>
             <div class="modal-footer">
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <form id="logoutForm" method="POST" action="${contextPath}/logout">

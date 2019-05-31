@@ -21,11 +21,6 @@ public class AccommodationServiceImpl implements AccommodationService {
     }
 
     @Override
-    public Set<Accommodation> findByUsers(Set<User> users) {
-        return accommodationRepository.findByUsers(users);
-    }
-
-    @Override
     public Set<Accommodation> findByLocation(Location location) {
         return accommodationRepository.findByLocation(location);
     }

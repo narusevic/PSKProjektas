@@ -2,7 +2,6 @@ package com.travel.services;
 
 import com.travel.models.Accommodation;
 import com.travel.models.Location;
-import com.travel.models.Room;
 import com.travel.models.UserAccommodation;
 import com.travel.repositories.LocationRepository;
 import com.travel.repositories.UserAccommodationRepository;
@@ -64,8 +63,8 @@ public class LocationServiceImpl implements LocationService {
         Location location = locationOpt.get();
 
         for (Accommodation accommodation: location.getAccomodations()) {
-            List<UserAccommodation> fromUserAccomodations = userAccommodationRepository.findAllByFromBetweenAndAccommodation(from, to, accommodation);
-            List<UserAccommodation> toUserAccomodations = userAccommodationRepository.findAllByFromBetweenAndAccommodation(from, to, accommodation);
+            List<UserAccommodation> fromUserAccomodations = userAccommodationRepository.findAllByArrivalDateBetweenAndAccommodation(from, to, accommodation);
+            List<UserAccommodation> toUserAccomodations = userAccommodationRepository.findAllByDepartureDateBetweenAndAccommodation(from, to, accommodation);
 
             for (UserAccommodation userAccomodation: toUserAccomodations){
                 if (!fromUserAccomodations.contains(userAccomodation)) {

@@ -111,7 +111,7 @@
                                       <td>${userTrip.getTrip().status}</td>
                                       <td><a href="${contextPath}/trip/approve/${userTrip.getTrip().id}" class="btn btn-outline-success">Approve</a></td>
                                       <td><a href="${contextPath}/trip/delete/${userTrip.getTrip().id}" class="btn btn-outline-danger">Delete</a></td>
-                                      <td><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
+                                      <td><a href="${contextPath}/trip/${userTrip.getTrip().id}" class="btn btn-outline-info"><span class="glyphicon glyphicon-info-sign">Full info</span></a></td>
                                   </tr>
                               </c:forEach>
                               </tbody>
