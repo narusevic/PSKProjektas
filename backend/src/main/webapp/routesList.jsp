@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Routes</title>
+    <title>Route Info</title>
 
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -132,7 +132,7 @@
                                         <td>${route.destination.city}</td>
                                         <td>${route.departureTime}</td>
                                         <td>${route.arrivalTime}</td>
-                                        <td align="center"><a href="${contextPath}/trip/${trip.id}" class="btn btn-outline-info">More info</a></td>
+                                        <td align="center"><a href="${contextPath}/route/${route.id}" class="btn btn-outline-info">More info</a></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
