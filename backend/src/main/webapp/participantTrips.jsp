@@ -74,9 +74,9 @@
               <!-- Breadcrumbs-->
               <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                      <a href="${contextPath}/trips">Organiser</a>
+                      <a href="${contextPath}/welcome">Main</a>
                   </li>
-                  <li class="breadcrumb-item active">All trips</li>
+                  <li class="breadcrumb-item active">My Trips</li>
               </ol>
 
               <!-- DataTables Example -->
