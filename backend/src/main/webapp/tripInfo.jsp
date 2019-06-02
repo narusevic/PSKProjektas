@@ -145,15 +145,16 @@
                         Merge Trips
                     </div>
                     <!--- Not fully fixed here --->
-                    <form:form method="POST" action="${contextPath}/merge/${trip.getId()}/" class="form-signin">
+                    <form:form method="POST" action="${contextPath}/trip/merge" class="form-signin" modelAttribute="mergeTrip">
                         <div class="form-group">
-                            <label for="sel1">Select trip to merge with:</label>
-                            <select class="form-control" id="sel1">
+                            <label for="sel1">   Select trip to merge with:</label>
+                            <form:select class="form-control" path="mergeId" id="sel1" >
                                 <c:forEach var="otherTrip" items="${allTrips}">
-                                    <option>From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </option>
+                                    <form:option value="${otherTrip.getId()}">From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </form:option>
                                 </c:forEach>
-                            </select>
+                            </form:select>
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                            <form:hidden value="${trip.getId()}" path="baseId"/>
                         </div>
                     </form:form>
                 </div>
