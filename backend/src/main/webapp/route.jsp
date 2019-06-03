@@ -178,6 +178,7 @@
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Route Amenities</div>
+                <a href="${contextPath}/amenityItem/create/${route.id}">Create an amenity item for this route</a>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">

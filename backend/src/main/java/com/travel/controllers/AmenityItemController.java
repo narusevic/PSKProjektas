@@ -58,41 +58,28 @@ public class AmenityItemController {
         amenityItem.setRoute(route);
         amenityItemService.save(amenityItem);
 
-        return "redirect:/welcome";
+        return "redirect:/amenityItem";
     }
 
     @PostMapping("amenityItem/confirm/{id}")
     public String confirm(@PathVariable String id, BindingResult bindingResult) {
         Optional<AmenityItem> amenityItemOptional = amenityItemService.findById(Long.parseLong(id));
         if (!amenityItemOptional.isPresent()) {
-            return "redirect:/createAmenityItem";
+            return "redirect:/amenityItem";
         }
 
         AmenityItem amenityItem = amenityItemOptional.get();
         amenityItem.setConfirmed(true);
         amenityItemService.save(amenityItem);
 
-        return "redirect:/welcome";
+        return "redirect:/amenityItem";
     }
 
     @GetMapping("/amenityItem")
-    public String getAmenityItems(Model model, Principal principal) {
-        User user = userService.findByEmail(principal.getName());
-        List<Trip> trips = tripService.findByOrganizerId(user.getId());
-        List<Route> routes = new ArrayList<Route>();
-        List<AmenityItem> amenityItems = new ArrayList<AmenityItem>();
+    public String getAmenityItems(Model model) {
+        List<AmenityItem> amenityItems1 = amenityItemService.findAll();
 
-        for (Trip trip : trips) {
-            Set<Route> routesOfTrip = trip.getRoutes();
-            routes.addAll(routesOfTrip);
-        }
-
-        for (Route route: routes) {
-            Set<AmenityItem> amenityItemsOfRoute = route.getCheckList();
-            amenityItems.addAll(amenityItemsOfRoute);
-        }
-
-        model.addAttribute("amenityItems", amenityItems);
+        model.addAttribute("amenityItems", amenityItems1);
 
         return "amenityItemsList";
     }

@@ -12,14 +12,28 @@
     <title>Amenity Items</title>
 </head>
 <body>
-<h1>Amenity items created for trips of the current user</h1>
-    <div class="container">
+<h1>Amenity items</h1>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Service</th>
+        <th>Comment</th>
+        <th>Is purchased</th>
+        <th>Price</th>
+        <th>Related route id</th>
+    </tr>
+    </thead>
+    <tbody>
         <c:forEach var="amenityItem" items="${amenityItems}">
-            <div>${amenityItem.amenity}</div>
-            <div>${amenityItem.comment}</div>
-            <div>${amenityItem.confirmed}</div>
-            <div>${amenityItem.price}</div>
+    <tr>
+            <td>${amenityItem.amenity.name}</td>
+            <td>${amenityItem.comment}</td>
+            <td>${amenityItem.confirmed}</td>
+            <td>${amenityItem.price}</td>
+            <td>${amenityItem.route.id}</td>
         </c:forEach>
-    </div>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
