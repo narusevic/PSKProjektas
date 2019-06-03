@@ -200,7 +200,7 @@
                             </tfoot>
                             <tbody>
                             <c:forEach var="amenityItem" items="${amenityItems}">
-                                <td>${amenityItem.amenity}</td>
+                                <td>${amenityItem.amenity.name}</td>
                                 <td>${amenityItem.price}</td>
                                 <td>${amenityItem.confirmed}</td>
                                 <td>${amenityItem.comment}</td>
