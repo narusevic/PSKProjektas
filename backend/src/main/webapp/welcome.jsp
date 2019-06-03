@@ -120,6 +120,11 @@
               <span>My Trips</span>
           </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/amenity/create">
+                <span>Create Amenity</span>
+            </a>
+        </li>
 
 
            <%--<h4 class="text-center"><a href="${contextPath}/amenity/create">Register an amenity (service)</a></h4>--%>

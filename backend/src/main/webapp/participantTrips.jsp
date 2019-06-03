@@ -50,7 +50,7 @@
               <a class="nav-link" href="${contextPath}/route">
                   Routes</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
               <a class="nav-link" href="${contextPath}/trip/">
                   <span>Trips</span>
               </a>
@@ -60,9 +60,14 @@
                   <span>Create Trip</span>
               </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
               <a class="nav-link" href="${contextPath}/trip/my">
                   <span>My Trips</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="${contextPath}/amenity/create">
+                  <span>Create Amenity</span>
               </a>
           </li>
       </ul>
@@ -70,14 +75,6 @@
       <div id="content-wrapper">
 
           <div class="container-fluid">
-
-              <!-- Breadcrumbs-->
-              <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                      <a href="${contextPath}/welcome">Main</a>
-                  </li>
-                  <li class="breadcrumb-item active">My Trips</li>
-              </ol>
 
               <!-- DataTables Example -->
               <div class="card mb-3">
@@ -100,6 +97,19 @@
                                   <th></th>
                               </tr>
                               </thead>
+                              <tfoot>
+                              <tr>
+                                  <th>From</th>
+                                  <th>To</th>
+                                  <th>Description</th>
+                                  <th>Departure Time</th>
+                                  <th>Arrival Time</th>
+                                  <th>Status</th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                              </tfoot>
                               <tbody>
                               <c:forEach var="userTrip" items="${userTrips}">
                                   <tr>
