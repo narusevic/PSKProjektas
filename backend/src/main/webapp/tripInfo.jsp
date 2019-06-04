@@ -178,6 +178,7 @@
                     </div>
                 </div>
             </div>
+
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
             <div class="container my-auto">
@@ -188,7 +189,6 @@
         </div>
         <!-- /.content-wrapper -->
 
-    </div>
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->
