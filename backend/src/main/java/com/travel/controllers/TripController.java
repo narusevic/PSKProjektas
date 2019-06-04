@@ -4,12 +4,8 @@ import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import com.travel.models.Location;
-import com.travel.models.Route;
-import com.travel.models.Status;
-import com.travel.models.Trip;
-import com.travel.models.User;
-import com.travel.models.UserTrip;
+
+import com.travel.models.*;
 import com.travel.services.LocationService;
 import com.travel.services.TripService;
 import com.travel.services.UserService;
@@ -32,6 +28,7 @@ public class TripController {
     private UserService userService;
     @Autowired
     private LocationService locationService;
+
 
     @PreAuthorize("hasAuthority('ORGANIZER')")
     @GetMapping("/trip/create")
@@ -83,6 +80,7 @@ public class TripController {
         List<Trip> allTrips = tripService.findAll();
         model.addAttribute("trip", trip);
         model.addAttribute("allTrips", allTrips);
+        model.addAttribute("mergeTrip", new MergeTrip());
         return "tripInfo";
     }
 
@@ -130,9 +128,9 @@ public class TripController {
         return "organizerDashboard";
     }
 
-    @PostMapping("/trip/merge/{tripId}/{mergedTripId}")
-    public String create(@PathVariable String tripId, @PathVariable String mergedTripId) {
-        tripService.merge(Long.parseLong(tripId), Long.parseLong(mergedTripId));
+    @PostMapping("/trip/merge")
+    public String create(@ModelAttribute("mergeTrip") MergeTrip mergeTrip) {
+        tripService.merge(mergeTrip.getBaseId(), mergeTrip.getMergeId());
         return "redirect:/trip";
     }
 }

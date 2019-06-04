@@ -165,18 +165,16 @@
                     <div class="card-body">
                         <div class="table-responsive">
                     <!--- Not fully fixed here --->
-                    <form:form method="POST" action="${contextPath}/merge/${trip.getId()}/" class="form-signin">
+                    <form:form method="POST" action="${contextPath}/trip/merge" class="form-signin" modelAttribute="mergeTrip">
                         <div class="form-group">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item active">Select trip to merge with:</li>
-                            </ol>
-                            <select class="form-control" id="sel1">
-                                <c:forEach var="otherTrip" items="${allTrips}">
-                                    <option>From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </option>
-                                </c:forEach>
-                            </select>
-                            <br/>
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                          <label for="sel1">   Select trip to merge with:</label>
+                          <form:select class="form-control" path="mergeId" id="sel1" >
+                              <c:forEach var="otherTrip" items="${allTrips}">
+                                  <form:option value="${otherTrip.getId()}">From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </form:option>
+                              </c:forEach>
+                          </form:select>
+                          <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                          <form:hidden value="${trip.getId()}" path="baseId"/>
                         </div>
                     </form:form>
                 </div>
