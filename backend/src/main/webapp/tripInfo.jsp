@@ -63,6 +63,11 @@
                     <span>My Trips</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${contextPath}/amenity/create">
+                    <span>Create Amenity</span>
+                </a>
+            </li>
         </ul>
 
         <div id="content-wrapper">
@@ -123,6 +128,15 @@
                                 <th>Show route info</th>
                             </tr>
                             </thead>
+                            <tfoot>
+                            <tr>
+                                <th>From City</th>
+                                <th>To City</th>
+                                <th>Departure Time</th>
+                                <th>Arrival Time</th>
+                                <th>Show route info</th>
+                            </tr>
+                            </tfoot>
                             <tbody>
                             <c:forEach var="route" items="${trip.getRoutes()}">
                                 <tr>
@@ -130,7 +144,7 @@
                                     <td>${route.getDestination().city}</td>
                                     <td>${route.getDepartureTime()}</td>
                                     <td>${route.getArrivalTime()}</td>
-                                    <td><a href="${contextPath}/route/${route.getId()}" class="btn btn-outline-primary">Show route info</a></td>
+                                    <td align="center"><a href="${contextPath}/route/${route.getId()}" class="btn btn-outline-primary">Show route info</a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -139,26 +153,35 @@
   </div>
   </div>
         <br/>
+
+            <div class="container-fluid">
+
+                <!--DataTables Example-->
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-table"></i>
                         Merge Trips
                     </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
                     <!--- Not fully fixed here --->
                     <form:form method="POST" action="${contextPath}/trip/merge" class="form-signin" modelAttribute="mergeTrip">
                         <div class="form-group">
-                            <label for="sel1">   Select trip to merge with:</label>
-                            <form:select class="form-control" path="mergeId" id="sel1" >
-                                <c:forEach var="otherTrip" items="${allTrips}">
-                                    <form:option value="${otherTrip.getId()}">From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </form:option>
-                                </c:forEach>
-                            </form:select>
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-                            <form:hidden value="${trip.getId()}" path="baseId"/>
+                          <label for="sel1">   Select trip to merge with:</label>
+                          <form:select class="form-control" path="mergeId" id="sel1" >
+                              <c:forEach var="otherTrip" items="${allTrips}">
+                                  <form:option value="${otherTrip.getId()}">From ${otherTrip.startPlace.getCity()} to ${otherTrip.destination.getCity()}, starting ${otherTrip.departureTime}, ending ${otherTrip.arrivalTime} </form:option>
+                              </c:forEach>
+                          </form:select>
+                          <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                          <form:hidden value="${trip.getId()}" path="baseId"/>
                         </div>
                     </form:form>
                 </div>
             </div>
+        </div>
+
+
 
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
@@ -170,7 +193,6 @@
         </div>
         <!-- /.content-wrapper -->
 
-    </div>
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->

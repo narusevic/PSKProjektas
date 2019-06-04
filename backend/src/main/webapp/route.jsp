@@ -74,7 +74,7 @@
             <a class="nav-link" href="${contextPath}/admin/user">
                 <span>Users</span></a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="${contextPath}/route">
                 Routes</a>
         </li>
@@ -91,6 +91,11 @@
         <li class="nav-item">
             <a class="nav-link" href="${contextPath}/trip/my">
                 <span>My Trips</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/trip/my">
+                <span>Create Amenity</span>
             </a>
         </li>
     </ul>
@@ -178,6 +183,7 @@
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Route Amenities</div>
+                <a href="${contextPath}/amenityItem/create/${route.id}" class="card-body">Create an amenity item for this route</a>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
@@ -185,7 +191,7 @@
                             <tr>
                                 <th>Amenity Type</th>
                                 <th>Amenity Price</th>
-                                <th>Is Confirmed</th>
+                                <th>Is Purchased</th>
                                 <th>Comment</th>
                             </tr>
                             </thead>
@@ -193,16 +199,18 @@
                             <tr>
                                 <th>Amenity Type</th>
                                 <th>Amenity Price</th>
-                                <th>Is Confirmed</th>
+                                <th>Is Purchased</th>
                                 <th>Comment</th>
                             </tr>
                             </tfoot>
                             <tbody>
                             <c:forEach var="amenityItem" items="${amenityItems}">
-                                <td>${amenityItem.amenity}</td>
-                                <td>${amenityItem.price}</td>
-                                <td>${amenityItem.confirmed}</td>
-                                <td>${amenityItem.comment}</td>
+                                <tr>
+                                    <td>${amenityItem.amenity.name}</td>
+                                    <td>${amenityItem.price}</td>
+                                    <td>${amenityItem.confirmed}</td>
+                                    <td>${amenityItem.comment}</td>
+                                </tr>
                             </c:forEach>
                             </tbody>
                         </table>

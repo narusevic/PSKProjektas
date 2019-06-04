@@ -6,6 +6,7 @@ import com.travel.repositories.AmenityItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -27,6 +28,11 @@ public class AmenityItemServiceImpl implements AmenityItemService {
     @Override
     public void save(AmenityItem amenityItem) {
         amenityItemRepository.save(amenityItem);
+    }
+
+    @Override
+    public List<AmenityItem> findAll() {
+        return amenityItemRepository.findAll();
     }
 }
 

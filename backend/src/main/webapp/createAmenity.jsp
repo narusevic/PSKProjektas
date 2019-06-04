@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register Amenity</title>
+    <title>Create Amenity</title>
 
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -68,7 +68,7 @@
             <a class="nav-link" href="${contextPath}/route">
                 Routes</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="${contextPath}/trip/">
                 <span>Trips</span>
             </a>
@@ -83,13 +83,18 @@
                 <span>My Trips</span>
             </a>
         </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="${contextPath}/amenity/create">
+                <span>Create Amenity</span>
+            </a>
+        </li>
     </ul>
 
     <div id="content-wrapper">
 
         <div class="container">
             <div class="card mb-3">
-                <div class="card-header">Register the amenity</div>
+                <div class="card-header">Create the amenity</div>
                 <div class="card-body">
                     <form:form method="POST" modelAttribute="amenityForm" class="form-signin">
                         <ol class="breadcrumb">

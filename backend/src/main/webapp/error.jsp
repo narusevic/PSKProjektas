@@ -72,6 +72,11 @@
                 <span>Create Trip</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${contextPath}/amenity/create">
+                <span>Create Amenity</span>
+            </a>
+        </li>
     </ul>
 
     <div id="content-wrapper">
